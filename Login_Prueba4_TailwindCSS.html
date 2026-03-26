@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Escuela de Fútbol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuración de tus colores personalizados en Tailwind
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'negro-carbon': '#1A1A1A',
+                'naranja-fuego': '#E65100',
+                'naranja-suave': '#FFF3E0',
+                'blanco-humo': '#F5F5F5',
+                'amarillo-volt': '#EEFF41',
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        /* CSS adicional para el efecto de desenfoque que Tailwind necesita habilitar */
+        .glass-effect {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-negro-carbon to-naranja-fuego h-screen flex items-center justify-center font-sans m-0">
+
+    <div class="glass-effect p-10 rounded-[24px] w-full max-w-[400px] shadow-2xl text-center">
+        
+        <div class="w-[70px] h-[70px] bg-amarillo-volt rounded-full mx-auto mb-6 flex items-center justify-center shadow-[0_0_20px_rgba(238,255,65,0.4)]">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a10 10 0 0 1 10 10l-2 2-3-1-2 3-3-1-2 3-2-2a10 10 0 0 1 4-14z"></path>
+            </svg>
+        </div>
+        
+        <h1 class="text-blanco-humo text-3xl font-extrabold mb-2 uppercase tracking-wide">Bienvenido</h1>
+        <p class="text-naranja-suave text-sm mb-8">Panel de Gestión Deportiva</p>
+        
+        <form class="space-y-4">
+            <div class="text-left">
+                <label class="block text-blanco-humo text-xs font-bold mb-2 ml-1">USUARIO</label>
+                <input type="text" 
+                       placeholder="Nombre de usuario" 
+                       class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-blanco-humo placeholder-white/30 focus:outline-none focus:border-amarillo-volt transition-all">
+            </div>
+
+            <div class="text-left">
+                <label class="block text-blanco-humo text-xs font-bold mb-2 ml-1">CONTRASEÑA</label>
+                <input type="password" 
+                       placeholder="••••••••" 
+                       class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-blanco-humo placeholder-white/30 focus:outline-none focus:border-amarillo-volt transition-all">
+            </div>
+            
+            <button type="submit" 
+                    class="w-full py-4 bg-naranja-fuego hover:bg-[#ff5e00] text-white font-bold rounded-xl uppercase tracking-wider shadow-lg shadow-naranja-fuego/40 transform hover:-translate-y-1 transition-all mt-4">
+                Ingresar al Sistema
+            </button>
+        </form>
+
+        <div class="mt-8 text-sm text-blanco-humo/70">
+            ¿Problemas de acceso? <a href="#" class="text-amarillo-volt font-bold hover:underline">Soporte Técnico</a>
+        </div>
+    </div>
+
+</body>
+</html>
