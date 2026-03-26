@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Escuela de Fútbol</title>
+    <style>
+        body {
+            background-color: #1A1A1A; /* Negro carbón */
+            color: #F5F5F5; /* Blanco humo */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-card {
+            background-color: #262626; /* Un gris ligeramente más claro que el fondo */
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 350px;
+            border-top: 5px solid #E65100; /* Naranja fuego */
+        }
+
+        .login-card h2 {
+            text-align: center;
+            color: #EEFF41; /* Amarillo Volt */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #FFF3E0; /* Naranja suave para etiquetas */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            background-color: #1A1A1A;
+            color: white;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #EEFF41; /* Volt en el foco */
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: #E65100; /* Naranja fuego */
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: #FF6D00;
+        }
+
+        .footer-links {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #EEFF41; /* Amarillo Volt para links */
+            text-decoration: none;
+        }
+
+        .badge-deportivo {
+            background-color: #EEFF41;
+            color: #1A1A1A;
+            padding: 2px 8px;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div style="text-align: center;">
+            <span class="badge-deportivo">SOFTWARE DEPORTIVO</span>
+        </div>
+        <h2>Acceso Escuela</h2>
+        
+        <form>
+            <div class="form-group">
+                <label for="user">Usuario / Email</label>
+                <input type="text" id="user" placeholder="Ej: entrenador_pro">
+            </div>
+            
+            <div class="form-group">
+                <label for="pass">Contraseña</label>
+                <input type="password" id="pass" placeholder="••••••••">
+            </div>
+
+            <button type="button" class="btn-login">ENTRAR</button>
+        </form>
+
+        <div class="footer-links">
+            <p>¿No tienes cuenta? <a href="#">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
