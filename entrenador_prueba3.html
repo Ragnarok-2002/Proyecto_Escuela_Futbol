@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Coach Pro</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'negro-carbon': '#1A1A1A',
+        'gris-carbon': '#252525',
+        'naranja-fuego': '#E65100',
+        'naranja-suave': '#FFF3E0',
+        'blanco-humo': '#F5F5F5',
+        'amarillo-volt': '#EEFF41',
+        'gris-claro': '#B3B3B3'
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.glass-effect {
+  background: rgba(37, 37, 37, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.fade {
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(10px)}
+  to {opacity:1; transform:translateY(0)}
+}
+</style>
+</head>
+
+<body class="bg-negro-carbon text-blanco-humo font-sans">
+
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<aside class="w-64 p-6 glass-effect">
+<h1 class="text-2xl font-black text-naranja-fuego mb-8">⚽ Coach</h1>
+
+<nav class="space-y-3">
+<button onclick="changeSection(this,'dashboard')" class="menu active w-full text-left px-4 py-3 rounded-2xl bg-naranja-fuego">Dashboard</button>
+<button onclick="changeSection(this,'jugadores')" class="menu w-full text-left px-4 py-3 rounded-2xl hover:bg-gris-carbon">Jugadores</button>
+</nav>
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 p-8 fade">
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="section">
+<h2 class="text-3xl font-black mb-6">Dashboard</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+<div class="glass-effect p-6 rounded-3xl hover:scale-105 transition-all">
+<p class="text-gris-claro">Jugadores</p>
+<h3 id="totalJugadores" class="text-3xl font-bold">0</h3>
+</div>
+</div>
+</section>
+
+<!-- JUGADORES -->
+<section id="jugadores" class="section hidden fade">
+
+<div class="flex justify-between mb-6">
+<h2 class="text-2xl font-bold">Jugadores</h2>
+<button onclick="openModal()" class="bg-naranja-fuego px-5 py-2 rounded-2xl font-bold hover:scale-105 transition-all">
++ Nuevo
+</button>
+</div>
+
+<input id="search" placeholder="Buscar jugador..." 
+class="mb-4 w-full p-3 rounded-2xl bg-gris-carbon outline-none">
+
+<div class="glass-effect p-6 rounded-3xl">
+
+<table class="w-full">
+<thead class="text-gris-claro">
+<tr>
+<th>Nombre</th>
+<th>Edad</th>
+<th>Posición</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="tablaJugadores"></tbody>
+
+</table>
+
+<p id="emptyState" class="text-center text-gris-claro py-6 hidden">
+No hay jugadores aún ⚽
+</p>
+
+</div>
+</section>
+
+</main>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+
+<div class="glass-effect p-8 rounded-3xl w-96 fade">
+<h3 class="text-xl font-bold mb-4">Nuevo Jugador</h3>
+
+<input id="nombre" placeholder="Nombre" class="w-full mb-3 p-3 rounded-xl bg-gris-carbon">
+<input id="edad" placeholder="Edad" type="number" class="w-full mb-3 p-3 rounded-xl bg-gris-carbon">
+<input id="posicion" placeholder="Posición" class="w-full mb-5 p-3 rounded-xl bg-gris-carbon">
+
+<div class="flex justify-end gap-3">
+<button onclick="closeModal()" class="px-4 py-2 bg-gray-600 rounded-xl">Cancelar</button>
+<button onclick="addJugador()" class="px-4 py-2 bg-naranja-fuego rounded-xl">Guardar</button>
+</div>
+
+</div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="hidden fixed bottom-6 right-6 bg-naranja-fuego px-6 py-3 rounded-2xl shadow-lg">
+Mensaje
+</div>
+
+<script>
+
+let jugadores = []
+
+function changeSection(btn, id){
+document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'))
+document.getElementById(id).classList.remove('hidden')
+
+document.querySelectorAll('.menu').forEach(b=>{
+b.classList.remove('bg-naranja-fuego')
+b.classList.add('hover:bg-gris-carbon')
+})
+btn.classList.add('bg-naranja-fuego')
+}
+
+function openModal(){
+document.getElementById('modal').classList.remove('hidden')
+}
+
+function closeModal(){
+document.getElementById('modal').classList.add('hidden')
+}
+
+function showToast(msg){
+let toast = document.getElementById('toast')
+toast.innerText = msg
+toast.classList.remove('hidden')
+
+setTimeout(()=> toast.classList.add('hidden'),2000)
+}
+
+function addJugador(){
+let nombre = document.getElementById('nombre').value
+let edad = document.getElementById('edad').value
+let posicion = document.getElementById('posicion').value
+
+if(!nombre || !edad || !posicion){
+showToast("Completa todos los campos")
+return
+}
+
+jugadores.push({nombre, edad, posicion})
+renderJugadores()
+closeModal()
+showToast("Jugador agregado")
+}
+
+function renderJugadores(){
+let tabla = document.getElementById('tablaJugadores')
+let empty = document.getElementById('emptyState')
+
+tabla.innerHTML = ""
+
+if(jugadores.length === 0){
+empty.classList.remove('hidden')
+}else{
+empty.classList.add('hidden')
+}
+
+jugadores.forEach((j,i)=>{
+tabla.innerHTML += `
+<tr class="border-b border-gray-800 hover:bg-gris-carbon transition-all">
+<td class="py-3">${j.nombre}</td>
+<td>${j.edad}</td>
+<td>${j.posicion}</td>
+<td>
+<button onclick="deleteJugador(${i})" class="text-red-400">Eliminar</button>
+</td>
+</tr>
+`
+})
+
+document.getElementById('totalJugadores').innerText = jugadores.length
+}
+
+function deleteJugador(i){
+jugadores.splice(i,1)
+renderJugadores()
+showToast("Jugador eliminado")
+}
+
+document.getElementById('search').addEventListener('input', function(){
+let val = this.value.toLowerCase()
+let rows = document.querySelectorAll('#tablaJugadores tr')
+
+rows.forEach(r=>{
+r.style.display = r.innerText.toLowerCase().includes(val) ? '' : 'none'
+})
+})
+
+</script>
+
+</body>
+</html>
