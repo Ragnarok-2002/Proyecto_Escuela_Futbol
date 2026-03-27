@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Escuela de Fútbol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          content: [],
+          theme: {
+            extend: {
+              colors: {
+                'negro-carbon': '#1A1A1A',
+                'gris-carbon': '#252525',      // Nuevo: para cards y paneles
+                'naranja-fuego': '#E65100',
+                'naranja-suave': '#FFF3E0',
+                'blanco-humo': '#F5F5F5',
+                'amarillo-volt': '#EEFF41',
+                'gris-claro': '#B3B3B3'        // Nuevo: texto secundario
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(37, 37, 37, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(238, 255, 65, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-negro-carbon via-negro-carbon to-naranja-fuego min-h-screen flex items-center justify-center font-sans p-4">
+
+    <div class="glass-effect p-10 rounded-3xl w-full max-w-md shadow-2xl">
+
+        <!-- Logo e Icono -->
+        <div class="flex flex-col items-center mb-8">
+            <div class="w-20 h-20 bg-amarillo-volt rounded-2xl flex items-center justify-center shadow-[0_0_25px_rgba(238,255,65,0.5)] mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2v20"></path>
+                    <path d="M2 12h20"></path>
+                    <path d="M7 7l10 10"></path>
+                    <path d="M17 7l-10 10"></path>
+                </svg>
+            </div>
+            
+            <h1 class="text-blanco-humo text-4xl font-black tracking-tighter">FUTBOL</h1>
+            <p class="text-naranja-suave text-lg -mt-2 font-medium">ESCUELA</p>
+        </div>
+
+        <div class="text-center mb-8">
+            <h2 class="text-blanco-humo text-2xl font-bold">Bienvenido de vuelta</h2>
+            <p class="text-gris-claro text-sm mt-1">Ingresa a tu panel de gestión deportiva</p>
+        </div>
+
+        <form class="space-y-6">
+            <!-- Usuario -->
+            <div>
+                <label class="block text-blanco-humo text-sm font-semibold mb-2">USUARIO</label>
+                <input type="text" 
+                       placeholder="Ingresa tu usuario"
+                       class="input-focus w-full px-5 py-4 bg-gris-carbon border border-white/10 rounded-2xl text-blanco-humo placeholder-gris-claro focus:border-amarillo-volt focus:outline-none text-base">
+            </div>
+
+            <!-- Contraseña -->
+            <div>
+                <label class="block text-blanco-humo text-sm font-semibold mb-2">CONTRASEÑA</label>
+                <input type="password" 
+                       placeholder="••••••••"
+                       class="input-focus w-full px-5 py-4 bg-gris-carbon border border-white/10 rounded-2xl text-blanco-humo placeholder-gris-claro focus:border-amarillo-volt focus:outline-none text-base">
+            </div>
+
+            <!-- Recordar y Olvidé contraseña -->
+            <div class="flex items-center justify-between text-sm">
+                <label class="flex items-center text-gris-claro cursor-pointer">
+                    <input type="checkbox" class="w-4 h-4 accent-amarillo-volt mr-2">
+                    Recordarme
+                </label>
+                <a href="#" class="text-amarillo-volt hover:underline font-medium">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <!-- Botón Ingresar -->
+            <button type="submit" 
+                    class="w-full py-4 bg-naranja-fuego hover:bg-orange-600 text-white font-bold text-lg rounded-2xl shadow-lg shadow-naranja-fuego/50 transition-all duration-300 hover:-translate-y-0.5 active:scale-95">
+                INGRESAR AL SISTEMA
+            </button>
+        </form>
+
+        <!-- Soporte -->
+        <div class="mt-8 text-center">
+            <p class="text-gris-claro text-sm">
+                ¿Problemas para acceder? 
+                <a href="#" class="text-amarillo-volt font-semibold hover:underline">Contacta a Soporte Técnico</a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
