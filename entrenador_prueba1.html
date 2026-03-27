@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Entrenador</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'negro-carbon': '#1A1A1A',
+            'gris-carbon': '#252525',
+            'naranja-fuego': '#E65100',
+            'naranja-suave': '#FFF3E0',
+            'blanco-humo': '#F5F5F5',
+            'amarillo-volt': '#EEFF41',
+            'gris-claro': '#B3B3B3'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-effect {
+      background: rgba(37, 37, 37, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+
+<body class="bg-negro-carbon text-blanco-humo font-sans">
+
+  <div class="flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 p-6 glass-effect shadow-2xl flex flex-col justify-between">
+      
+      <div>
+        <h1 class="text-2xl font-black tracking-tight mb-10 text-naranja-fuego">
+          ⚽ Coach Panel
+        </h1>
+
+        <nav class="space-y-4">
+          <a href="#" class="block px-4 py-3 rounded-2xl bg-gris-carbon hover:bg-naranja-fuego transition-all duration-300">
+            Dashboard
+          </a>
+          <a href="#" class="block px-4 py-3 rounded-2xl hover:bg-gris-carbon transition-all duration-300">
+            Jugadores
+          </a>
+          <a href="#" class="block px-4 py-3 rounded-2xl hover:bg-gris-carbon transition-all duration-300">
+            Entrenamientos
+          </a>
+          <a href="#" class="block px-4 py-3 rounded-2xl hover:bg-gris-carbon transition-all duration-300">
+            Asistencias
+          </a>
+          <a href="#" class="block px-4 py-3 rounded-2xl hover:bg-gris-carbon transition-all duration-300">
+            Pagos
+          </a>
+        </nav>
+      </div>
+
+      <button class="bg-naranja-fuego text-white py-3 rounded-2xl font-bold shadow-lg hover:scale-105 transition-all duration-300">
+        Cerrar sesión
+      </button>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="flex-1 p-8">
+
+      <!-- HEADER -->
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-black tracking-tight">
+          Bienvenido, Entrenador
+        </h2>
+
+        <button class="bg-amarillo-volt text-black px-6 py-3 rounded-2xl font-bold shadow-lg hover:scale-105 transition-all duration-300">
+          + Nuevo Entrenamiento
+        </button>
+      </div>
+
+      <!-- CARDS -->
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+        <div class="glass-effect p-6 rounded-3xl shadow-xl">
+          <p class="text-gris-claro">Jugadores</p>
+          <h3 class="text-3xl font-bold mt-2">24</h3>
+        </div>
+
+        <div class="glass-effect p-6 rounded-3xl shadow-xl">
+          <p class="text-gris-claro">Entrenamientos</p>
+          <h3 class="text-3xl font-bold mt-2">8</h3>
+        </div>
+
+        <div class="glass-effect p-6 rounded-3xl shadow-xl">
+          <p class="text-gris-claro">Asistencia Promedio</p>
+          <h3 class="text-3xl font-bold mt-2 text-amarillo-volt">87%</h3>
+        </div>
+
+      </div>
+
+      <!-- TABLA DE JUGADORES -->
+      <div class="glass-effect p-6 rounded-3xl shadow-2xl">
+        
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-xl font-bold tracking-wide">Lista de Jugadores</h3>
+
+          <button class="bg-naranja-fuego px-5 py-2 rounded-2xl font-bold hover:scale-105 transition-all duration-300">
+            + Agregar
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="text-gris-claro border-b border-gray-700">
+                <th class="py-3">Nombre</th>
+                <th>Edad</th>
+                <th>Posición</th>
+                <th>Estado</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody class="space-y-4">
+
+              <tr class="border-b border-gray-800 hover:bg-gris-carbon transition-all">
+                <td class="py-4">Juan Pérez</td>
+                <td>15</td>
+                <td>Delantero</td>
+                <td class="text-amarillo-volt font-bold">Activo</td>
+                <td>
+                  <button class="text-naranja-fuego hover:underline">Ver</button>
+                </td>
+              </tr>
+
+              <tr class="border-b border-gray-800 hover:bg-gris-carbon transition-all">
+                <td class="py-4">Luis Gómez</td>
+                <td>14</td>
+                <td>Defensa</td>
+                <td class="text-gris-claro">Inactivo</td>
+                <td>
+                  <button class="text-naranja-fuego hover:underline">Ver</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>
