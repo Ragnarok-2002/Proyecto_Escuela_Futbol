@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Panel Entrenador</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'negro-carbon': '#1A1A1A',
+        'gris-carbon': '#252525',
+        'naranja-fuego': '#E65100',
+        'naranja-suave': '#FFF3E0',
+        'blanco-humo': '#F5F5F5',
+        'amarillo-volt': '#EEFF41',
+        'gris-claro': '#B3B3B3'
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.glass-effect {
+  background: rgba(37, 37, 37, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+</style>
+</head>
+
+<body class="bg-negro-carbon text-blanco-humo font-sans">
+
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<aside class="w-64 p-6 glass-effect shadow-2xl">
+<h1 class="text-2xl font-black text-naranja-fuego mb-8">⚽ Coach</h1>
+
+<nav class="space-y-3">
+<button onclick="showSection('dashboard')" class="menu-btn w-full text-left px-4 py-3 rounded-2xl bg-gris-carbon">Dashboard</button>
+<button onclick="showSection('jugadores')" class="menu-btn w-full text-left px-4 py-3 rounded-2xl hover:bg-gris-carbon">Jugadores</button>
+<button onclick="showSection('entrenamientos')" class="menu-btn w-full text-left px-4 py-3 rounded-2xl hover:bg-gris-carbon">Entrenamientos</button>
+<button onclick="showSection('asistencias')" class="menu-btn w-full text-left px-4 py-3 rounded-2xl hover:bg-gris-carbon">Asistencias</button>
+<button onclick="showSection('pagos')" class="menu-btn w-full text-left px-4 py-3 rounded-2xl hover:bg-gris-carbon">Pagos</button>
+</nav>
+</aside>
+
+<!-- CONTENIDO -->
+<main class="flex-1 p-8">
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="section">
+<h2 class="text-3xl font-black mb-6">Dashboard</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+<div class="glass-effect p-6 rounded-3xl shadow-xl">
+<p class="text-gris-claro">Jugadores</p>
+<h3 class="text-3xl font-bold">24</h3>
+</div>
+
+<div class="glass-effect p-6 rounded-3xl shadow-xl">
+<p class="text-gris-claro">Entrenamientos</p>
+<h3 class="text-3xl font-bold">12</h3>
+</div>
+
+<div class="glass-effect p-6 rounded-3xl shadow-xl">
+<p class="text-gris-claro">Asistencia</p>
+<h3 class="text-3xl font-bold text-amarillo-volt">90%</h3>
+</div>
+</div>
+</section>
+
+<!-- JUGADORES -->
+<section id="jugadores" class="section hidden">
+<div class="flex justify-between mb-6">
+<h2 class="text-2xl font-bold">Jugadores</h2>
+<button class="bg-naranja-fuego px-5 py-2 rounded-2xl font-bold hover:scale-105 transition-all">+ Nuevo</button>
+</div>
+
+<div class="glass-effect p-6 rounded-3xl">
+<table class="w-full">
+<thead class="text-gris-claro">
+<tr>
+<th>Nombre</th>
+<th>Edad</th>
+<th>Posición</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-gray-800 hover:bg-gris-carbon">
+<td class="py-3">Carlos Ruiz</td>
+<td>16</td>
+<td>Portero</td>
+<td><button class="text-naranja-fuego">Editar</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ENTRENAMIENTOS -->
+<section id="entrenamientos" class="section hidden">
+<div class="flex justify-between mb-6">
+<h2 class="text-2xl font-bold">Entrenamientos</h2>
+<button class="bg-naranja-fuego px-5 py-2 rounded-2xl font-bold">+ Crear</button>
+</div>
+
+<div class="grid gap-4">
+<div class="glass-effect p-6 rounded-3xl">
+<p class="text-gris-claro">Fecha</p>
+<h3 class="font-bold">10 Octubre</h3>
+<p class="text-sm text-gris-claro">Entrenamiento físico</p>
+</div>
+</div>
+</section>
+
+<!-- ASISTENCIAS -->
+<section id="asistencias" class="section hidden">
+<h2 class="text-2xl font-bold mb-6">Asistencia</h2>
+
+<div class="glass-effect p-6 rounded-3xl">
+<table class="w-full">
+<thead class="text-gris-claro">
+<tr>
+<th>Jugador</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="py-3">Juan Pérez</td>
+<td>
+<select class="bg-gris-carbon p-2 rounded-xl">
+<option>Presente</option>
+<option>Ausente</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- PAGOS -->
+<section id="pagos" class="section hidden">
+<h2 class="text-2xl font-bold mb-6">Pagos</h2>
+
+<div class="glass-effect p-6 rounded-3xl">
+<table class="w-full">
+<thead class="text-gris-claro">
+<tr>
+<th>Jugador</th>
+<th>Monto</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="py-3">Luis Gómez</td>
+<td>$50</td>
+<td class="text-amarillo-volt">Pagado</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+</main>
+</div>
+
+<script>
+function showSection(id) {
+document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'))
+document.getElementById(id).classList.remove('hidden')
+}
+</script>
+
+</body>
+</html>
